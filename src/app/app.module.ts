@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { WarningAlertComponent } from './warning-alert/warning-alert.component';
+import { UsernameComponent } from './username/username.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SuccessAlertComponent,
     WarningAlertComponent,
+    UsernameComponent,
   ],
   imports: [
     BrowserModule,
