@@ -8,6 +8,9 @@ import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { WarningAlertComponent } from './warning-alert/warning-alert.component';
 import { UsernameComponent } from './username/username.component';
 import { ParagraphComponent } from './paragraph/paragraph.component';
+import { GameControlComponent } from './game-control/game-control.component';
+import { OddComponent } from './odd/odd.component';
+import { EvenComponent } from './even/even.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { ParagraphComponent } from './paragraph/paragraph.component';
     WarningAlertComponent,
     UsernameComponent,
     ParagraphComponent,
+    GameControlComponent,
+    OddComponent,
+    EvenComponent,
   ],
   imports: [
     BrowserModule,

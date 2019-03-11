@@ -12,6 +12,19 @@
     </div>
   </div>
   <hr>
-  <app-paragraph></app-paragraph>
+  <app-game-control 
+    (numberCreated)="onNumberCreated($event)">
+  </app-game-control>
+  <div class="row">
+    <div class="col-xs-12">
+      <ng-container 
+        *ngFor="let numberObj of numbers">
+          <app-odd *ngIf="numberObj.number % 2" [number]="numberObj.number">
+          </app-odd>
+          <app-even *ngIf="numberObj.number % 2 === 0" [number]="numberObj.number">
+          </app-even>
+      </ng-container>
+    </div>
+  </div>
 </div>
 
