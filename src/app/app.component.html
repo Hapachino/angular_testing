@@ -1,30 +1,68 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <ol>
-        <li>Create two new Components (manually or with CLI): WarningAlert and SuccessAlert</li>
-        <li>Output them beneath each other in the AppComponent</li>
-        <li>Output a warning or success message in the Components</li>
-        <li>Style the Components appropriately (maybe some red/ green text?)</li>
-      </ol>
-      <p>Use external or internal templates and styles!</p>
-      <p>Feel free to create more components, nest them into each other or play around with different types of selectors!</p>
-    </div>
-  </div>
-  <hr>
-  <app-game-control 
-    (numberCreated)="onNumberCreated($event)">
-  </app-game-control>
-  <div class="row">
-    <div class="col-xs-12">
-      <ng-container 
-        *ngFor="let numberObj of numbers">
-          <app-odd *ngIf="numberObj.number % 2" [number]="numberObj.number">
-          </app-odd>
-          <app-even *ngIf="numberObj.number % 2 === 0" [number]="numberObj.number">
-          </app-even>
-      </ng-container>
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-group">
+          <label for="email">
+            Email
+          </label>
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            id="email"
+            required
+            email
+            ngModel
+            #email="ngModel"
+            [ngModel]="default">
+            <span *ngIf="!email.valid && email.touched" class="help-block">Please enter valid email!</span>
+        </div>
+
+        <div class="form-group">
+          <label for="subscription">
+            subscription
+          </label>
+          <select 
+            name="subscription" 
+            id="subscription" 
+            class="form-control"
+            ngModel>
+              <option value="basic">Basic</option>
+              <option value="advanced">Advanced</option>
+              <option value="pro">Pro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="password">
+           Password
+          </label>
+          <input 
+            class="form-control"
+            type="password"
+            name="password"
+            id="password"
+            required
+            ngModel>
+        </div>
+
+        <div class="form-group">
+          <textarea 
+            name="questionAnswer" 
+            rows="3"
+            [(ngModel)]="answer"
+            class="form-control"
+            >
+          </textarea>
+        </div>
+        <p>{{ answer }}</p>
+        <button
+          [disabled]="!f.valid"
+          class="btn btn-primary">
+          Submit
+        </button>
+      </form>
     </div>
   </div>
 </div>
-

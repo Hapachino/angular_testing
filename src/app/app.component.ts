@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   numbers = [];
+  default = 'basic';
 
   onNumberCreated(numberData: { number: number }) {
     this.numbers.push({ number: numberData.number });
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form);
   }
 }
