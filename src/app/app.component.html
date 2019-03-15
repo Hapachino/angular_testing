@@ -6,6 +6,7 @@
           id="user-data" 
           ngModelGroup="userData"
           #userData="ngModelGroup">
+
           <div class="form-group">
             <label for="email">
               Email
@@ -14,15 +15,15 @@
               type="email"
               name="email"
               id="email"
-              required
               email
               ngModel
               #email="ngModel"
               [ngModel]="default">
               <span *ngIf="!email.valid && email.touched" class="help-block">Please enter valid email!</span>
             </label>
-            
           </div>
+
+          <button (click)="defaultEmail()">Default Email</button>
 
           <div class="form-group">
             <label for="subscription">
@@ -49,8 +50,8 @@
             <input 
               ngModel
               [value]="price"
-              name="price"
               [id]="price"
+              name="price"
               type="radio">
             {{ price }}
           </label>
@@ -64,7 +65,7 @@
             type="password"
             name="password"
             id="password"
-            required
+            
             ngModel>
           </label>
         </div>
@@ -86,6 +87,14 @@
           Submit
         </button>
       </form>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Your Data</h3>
+        <p>Email: {{ user.email }}</p>
+        <p>Price: {{ user.price }}</p>
+      </div>
     </div>
   </div>
 </div>
