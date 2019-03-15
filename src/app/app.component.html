@@ -2,49 +2,71 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-        <div class="form-group">
-          <label for="email">
-            Email
-          </label>
-          <input
-            class="form-control"
-            type="email"
-            name="email"
-            id="email"
-            required
-            email
-            ngModel
-            #email="ngModel"
-            [ngModel]="default">
-            <span *ngIf="!email.valid && email.touched" class="help-block">Please enter valid email!</span>
+        <div 
+          id="user-data" 
+          ngModelGroup="userData"
+          #userData="ngModelGroup">
+          <div class="form-group">
+            <label for="email">
+              Email
+              <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              required
+              email
+              ngModel
+              #email="ngModel"
+              [ngModel]="default">
+              <span *ngIf="!email.valid && email.touched" class="help-block">Please enter valid email!</span>
+            </label>
+            
+          </div>
+
+          <div class="form-group">
+            <label for="subscription">
+              subscription
+              <select 
+                name="subscription" 
+                id="subscription" 
+                class="form-control"
+                ngModel>
+                  <option value="basic">Basic</option>
+                  <option value="advanced">Advanced</option>
+                  <option value="pro">Pro</option>
+              </select>
+            </label>
+
+          </div>
+        <p *ngIf="!userData.valid && userData.touched">hey</p>
         </div>
 
-        <div class="form-group">
-          <label for="subscription">
-            subscription
+        <div 
+          class="radio"
+          *ngFor="let price of prices">
+          <label>
+            <input 
+              ngModel
+              [value]="price"
+              name="price"
+              [id]="price"
+              type="radio">
+            {{ price }}
           </label>
-          <select 
-            name="subscription" 
-            id="subscription" 
-            class="form-control"
-            ngModel>
-              <option value="basic">Basic</option>
-              <option value="advanced">Advanced</option>
-              <option value="pro">Pro</option>
-          </select>
         </div>
 
         <div class="form-group">
           <label for="password">
            Password
-          </label>
-          <input 
+           <input 
             class="form-control"
             type="password"
             name="password"
             id="password"
             required
             ngModel>
+          </label>
         </div>
 
         <div class="form-group">
@@ -55,8 +77,9 @@
             class="form-control"
             >
           </textarea>
+          <p>{{ answer }}</p>
         </div>
-        <p>{{ answer }}</p>
+
         <button
           [disabled]="!f.valid"
           class="btn btn-primary">

@@ -8,8 +8,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   numbers = [];
-  default = 'basic';
-
+  default = '';
+  prices = [100, 200, 300];
+  
   onNumberCreated(numberData: { number: number }) {
     this.numbers.push({ number: numberData.number });
   }
