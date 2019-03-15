@@ -21,10 +21,10 @@ export class AppComponent {
     this.signUpForm.form.patchValue({
       userData: {
         email: 'hello',
-        
       },
       password: 'hey',
     });
+    console.log(this.user);
   }
 
   onNumberCreated(numberData: { number: number }) {
@@ -37,5 +37,7 @@ export class AppComponent {
 
     user.email = userData.email;
     user.price = price;
+
+    this.signUpForm.reset();
   }
 }
