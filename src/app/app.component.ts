@@ -8,9 +8,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   subscriptions = [
-    'basic',
-    'advanced',
-    'pro',
+    'Basic',
+    'Advanced',
+    'Pro',
   ];
 
   info = {

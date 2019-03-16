@@ -13,20 +13,22 @@
             id="email"
             email
             required
-            [(ngModel)]="emailValue"
+            ngModel
             #email="ngModel">
+          <span *ngIf="!email.valid && email.touched" class="help-block">Please enter valid email!</span>
         </div>
-        <span *ngIf="!email.valid && email.touched" class="help-block">Please enter valid email!</span>
         <div class="form-group">
           <label for="subscription">Subscription</label>
           <select
             class="form-control"
             name="subscription" 
             id="subscription"
-            [ngModel]="'pro'">
-            <option value="basic">Basic</option>
-            <option value="advanced">Advanced</option>
-            <option value="pro">Pro</option>
+            [ngModel]="'Pro'">
+            <option 
+              *ngFor="let s of subscriptions"
+              [value]="s">
+              {{ s }}
+            </option>
           </select>
         </div>
         <div class="form-group">
@@ -36,11 +38,11 @@
             id="password"
             type="password"
             name="password"
-            ngModel="password"
+            ngModel
             #password="ngModel"
             required>
+          <span *ngIf="!password.valid && password.touched"class="help-block">Please enter valid password!</span>
         </div>
-        <span *ngIf="!password.valid && password.touched"class="help-block">Please enter valid password!</span>
         <button
           [disabled]="!f.valid"
           class="btn btn-primary"
